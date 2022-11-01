@@ -14,9 +14,10 @@ public class Test {
 	      "root"
 	    );
 	    // SQL文の実行
-	    String sql = "select * from test_table where id = '" + args[0] + "'";
+	    String sql = "select * from test_table where id = ?";
 	    System.out.println(sql);
 	    PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1,  args[0]);
 	    ResultSet rs = pstmt.executeQuery();
 	    // 検索結果を表示
 	    while (rs.next()) {
