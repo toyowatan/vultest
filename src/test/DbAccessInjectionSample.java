@@ -30,11 +30,11 @@ public class DbAccessInjectionSample {
 			connection = DriverManager.getConnection(
 					"jdbc:mysql://0.0.0.1/test_database?useSSL=false",
 					"root",
-					"root"
+					args[0]
 			);
 
 			// ★★★引数の文字列をそのまま連結してクエリのSQL文を組み立てる（インジェクションの可能性がある方法）★★★
-			//String sql = "select * from test_table where id = '" + args[0] + "'";
+			//String sql = "select * from test_table where id = '" + args[1] + "'";
 			String sql = "select * from test_table where id = ?";
 			pstmt.setString(1,  args[0]);
 			System.out.println(sql);
